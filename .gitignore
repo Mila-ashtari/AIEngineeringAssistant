@@ -100,3 +100,5 @@ Desktop.ini
 # .NET build artifacts
 [Bb]in/
 [Oo]bj/
+[Dd]ebug/
+[Rr]elease/

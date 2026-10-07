@@ -1,0 +1,98 @@
+# =========================
+# .NET / Visual Studio
+# =========================
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# =========================
+# NuGet
+# =========================
+
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# =========================
+# Testing / Coverage
+# =========================
+
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# =========================
+# Logs
+# =========================
+
+*.log
+logs/
+
+# =========================
+# Local configuration
+# =========================
+
+# Local environment variables
+.env
+.env.*
+!.env.example
+
+# Local-only ASP.NET configuration
+appsettings.Local.json
+
+# =========================
+# Secrets
+# =========================
+
+# Never commit certificates or keys
+*.pfx
+*.p12
+*.key
+*.pem
+
+# =========================
+# Database / SQL
+# =========================
+
+# Local database files
+*.mdf
+*.ldf
+*.db
+*.db-shm
+*.db-wal
+
+# =========================
+# OS generated files
+# =========================
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# =========================
+# VS Code
+# =========================
+
+.vscode/

@@ -8,17 +8,22 @@ namespace AIEngineeringAssistant.Api.Controllers;
 [Route("api/[controller]")]
 public class TicketController : ControllerBase
 {
-    [HttpGet]
-    public ActionResult<List<Ticket>> GetAllTickets()
+    private readonly ITicketService _ticketService;
+
+    public TicketController(ITicketService ticketService)
     {
-        var tickets = TicketService.GetAll();
-        return Ok(tickets);
+        _ticketService = ticketService;
     }
+
+     [HttpGet]
+    public ActionResult<List<Ticket>> GetAll() =>
+        _ticketService.GetAll();
+
 
     [HttpGet("{id}")]
     public ActionResult<Ticket> GetTicket(int id)
     {
-        var ticket = TicketService.Get(id);
+        var ticket = _ticketService.Get(id);
         if (ticket is null)
             return NotFound();
 
@@ -28,7 +33,7 @@ public class TicketController : ControllerBase
     [HttpPost]
     public ActionResult AddTicket(Ticket ticket)
     {
-        TicketService.Add(ticket);
+        _ticketService.Add(ticket);
         return CreatedAtAction(nameof(GetTicket), new { id = ticket.Id }, ticket);
     }
 
@@ -40,12 +45,12 @@ public class TicketController : ControllerBase
         return BadRequest();
 
     var existingTicket =
-        TicketService.Get(id);
+        _ticketService.Get(id);
 
     if (existingTicket is null)
         return NotFound();
 
-    TicketService.Update(ticket);
+    _ticketService.Update(ticket);
 
     return NoContent();
 }
@@ -54,7 +59,7 @@ public class TicketController : ControllerBase
     [HttpDelete("{id}")]
     public ActionResult DeleteTicket(int id)
     {
-        TicketService.Delete(id);
+        _ticketService.Delete(id);
         return NoContent();
     }
 }

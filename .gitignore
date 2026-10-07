@@ -96,3 +96,7 @@ Desktop.ini
 # =========================
 
 .vscode/
+
+# .NET build artifacts
+[Bb]in/
+[Oo]bj/

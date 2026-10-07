@@ -2,13 +2,13 @@ using AIEngineeringAssistant.Api.Models;
 
 namespace AIEngineeringAssistant.Api.Services;
 
-public class TicketService : ITicketService
+public class InMemoryTicketService : ITicketService
 {
     static List<Ticket> Tickets { get; }
 
     static int nextId = 3;
 
-    static TicketService()
+    static InMemoryTicketService()
     {
         Tickets = new List<Ticket>
         {

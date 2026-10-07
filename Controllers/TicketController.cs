@@ -10,10 +10,10 @@ public class TicketController : ControllerBase
 {
     private readonly ITicketService _ticketService;
 
-    public TicketController(ITicketService ticketService)
+    public TicketController(ITicketService DBticketService)
     {
-        _ticketService = ticketService;
-    }
+            _ticketService = DBticketService;
+        }
 
      [HttpGet]
     public ActionResult<List<Ticket>> GetAll() =>

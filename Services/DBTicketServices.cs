@@ -18,6 +18,7 @@ public class DBTicketService : ITicketService
 
     public void Add(Ticket ticket)
     {
+        ticket.Id = 0;
         _context.Tickets.Add(ticket);
         _context.SaveChanges();
     }

@@ -1,104 +1,85 @@
-# =========================
-# .NET / Visual Studio
-# =========================
 
-# Build results
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
+# =====================================
+# React / TypeScript / Vite Client
+# =====================================
 
-# Visual Studio
-.vs/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+# Dependencies
+client/node_modules/
 
-# JetBrains Rider
-.idea/
-*.sln.iml
-
-# =========================
-# NuGet
-# =========================
-
-*.nupkg
-*.snupkg
-**/[Pp]ackages/*
-!**/[Pp]ackages/build/
-
-# =========================
-# Testing / Coverage
-# =========================
-
-TestResults/
-coverage/
-coverage.*
-*.coverage
-*.coveragexml
-
-# =========================
-# Logs
-# =========================
-
-*.log
-logs/
-
-# =========================
-# Local configuration
-# =========================
+# Production build
+client/dist/
+client/build/
 
 # Local environment variables
-.env
-.env.*
-!.env.example
+client/.env
+client/.env.local
+client/.env.development.local
+client/.env.production.local
 
-# Local-only ASP.NET configuration
-appsettings.Local.json
+# Keep example environment files
+!client/.env.example
 
-# =========================
-# Secrets
-# =========================
+# Test coverage
+client/coverage/
+client/playwright-report/
+client/test-results/
 
-# Never commit certificates or keys
-*.pfx
-*.p12
-*.key
-*.pem
+# Vite cache
+client/node_modules/.vite/
+client/.vite/
 
-# =========================
-# Database / SQL
-# =========================
+# TypeScript build cache
+client/*.tsbuildinfo
 
-# Local database files
+# Debug logs
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/pnpm-debug.log*
+
+# =====================================
+# ASP.NET Core API
+# =====================================
+
+# Build outputs
+**/bin/
+**/obj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# User-specific files
+*.user
+*.suo
+*.rsuser
+
+# Debug files
+*.pdb
+*.cache
+
+# Local configuration and secrets
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/secrets.json
+
+# Local databases
 *.mdf
 *.ldf
 *.db
-*.db-shm
-*.db-wal
 
-# =========================
-# OS generated files
-# =========================
+# Test results
+**/TestResults/
+*.coverage
+*.coveragexml
 
-# Windows
-Thumbs.db
-Desktop.ini
+# NuGet packages
+*.nupkg
 
-# macOS
+# =====================================
+# OS Files
+# =====================================
 .DS_Store
-
-# =========================
-# VS Code
-# =========================
-
-.vscode/
-
-# .NET build artifacts
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
-[Rr]elease/
+Thumbs.db

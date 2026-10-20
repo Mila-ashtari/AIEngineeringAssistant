@@ -8,7 +8,7 @@ import {
   Stack,
 } from '@mui/material';
 
-import { useGetTicketsQuery } from '../api/ticketsApi';
+import { useGetTicketsQuery } from '../api';
 
 export default function TicketsPage() {
   const {

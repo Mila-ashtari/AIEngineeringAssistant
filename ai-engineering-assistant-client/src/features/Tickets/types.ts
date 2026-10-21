@@ -5,3 +5,5 @@ export interface Ticket {
   status: string;
   priority: string;
 }
+
+export type TicketInput = Omit<Ticket, 'id'>;

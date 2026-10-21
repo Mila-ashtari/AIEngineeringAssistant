@@ -4,7 +4,7 @@ import { Alert, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 
 import TicketForm from '../components/TicketForm';
-import { useCreateTicketMutation } from '../api/ticketsApi';
+import { useCreateTicketMutation } from  '../api';
 import type { TicketInput } from '../types';
 
 export default function CreateTicketPage() {

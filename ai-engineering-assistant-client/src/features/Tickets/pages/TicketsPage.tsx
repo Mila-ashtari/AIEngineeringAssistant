@@ -6,7 +6,9 @@ import {
   Card,
   CardContent,
   Stack,
+  Button,
 } from '@mui/material';
+import { Link } from 'react-router';
 
 import { useGetTicketsQuery } from '../api';
 
@@ -17,7 +19,6 @@ export default function TicketsPage() {
     isError,
   } = useGetTicketsQuery();
 
-  console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
   if (isLoading) {
     return <CircularProgress />;
   }
@@ -35,6 +36,13 @@ export default function TicketsPage() {
       <Typography variant="h4" sx={{ mb: 3 }}>
         Development Tickets
       </Typography>
+      <Button
+  component={Link}
+  to="/tickets/new"
+  variant="contained"
+>
+  Create Ticket
+</Button>
 
       {tickets.length === 0 && (
         <Typography>No tickets found.</Typography>

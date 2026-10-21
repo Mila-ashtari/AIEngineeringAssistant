@@ -17,6 +17,7 @@ export default function TicketsPage() {
     isError,
   } = useGetTicketsQuery();
 
+  console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
   if (isLoading) {
     return <CircularProgress />;
   }

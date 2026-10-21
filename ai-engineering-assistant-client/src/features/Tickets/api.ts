@@ -37,7 +37,7 @@ export const ticketsApi = api.injectEndpoints({
 
     updateTicket: builder.mutation<
       void,
-      { id: number; ticket: TicketInput }
+      { id: number; ticket: Ticket }
     >({
       query: ({ id, ticket }) => ({
         url: `/api/Ticket/${id}`,

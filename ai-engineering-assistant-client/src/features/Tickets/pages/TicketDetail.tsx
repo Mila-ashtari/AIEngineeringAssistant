@@ -79,7 +79,11 @@ export default function TicketDetail() {
       </Typography>
 
       <Stack direction="row" spacing={2}>
-        <Button>
+         <Button
+          component={Link}
+          to={`/tickets/${ticket.id}/edit`}
+          variant="contained"
+        >
           Edit Ticket
         </Button>
         <Button

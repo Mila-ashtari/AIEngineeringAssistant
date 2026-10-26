@@ -1,5 +1,5 @@
 import { api } from '../../services/api';
-import type { Ticket } from './types';
+import type { Ticket, TicketInput } from './types';
 
 export const ticketsApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -37,12 +37,12 @@ export const ticketsApi = api.injectEndpoints({
 
     updateTicket: builder.mutation<
       void,
-      { id: number; ticket: Ticket }
+      { id: number; ticketInput: TicketInput }
     >({
-      query: ({ id, ticket }) => ({
+      query: ({ id, ticketInput }) => ({
         url: `/api/Ticket/${id}`,
         method: 'PUT',
-        body: { ...ticket, id },
+        body: { ...ticketInput, id },
       }),
       invalidatesTags: (_result, _error, { id }) => [
         { type: 'Ticket', id },

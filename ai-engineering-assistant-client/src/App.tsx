@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router';
 import TicketsPage from './features/tickets/pages/TicketsPage';
 import TicketDetail from './features/tickets/pages/TicketDetail';
-import CreateTicketPage from './features/tickets/components/CreateTicketPage';
+import CreateTicketPage from './features/tickets/components/CreateTicket';
 
 export default function App() {
   return (

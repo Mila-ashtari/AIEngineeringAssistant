@@ -1,18 +1,25 @@
+import { useState } from 'react';
 import {
   Alert,
   Box,
   Button,
   Chip,
   CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Stack,
   Typography,
 } from '@mui/material';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 
-import { useGetTicketQuery } from '../api';
+import { useDeleteTicketMutation, useGetTicketQuery } from '../api';
 
 export default function TicketDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const ticketId = Number(id);
   const isValidTicketId = Number.isInteger(ticketId) && ticketId > 0;
   const {
@@ -21,8 +28,20 @@ export default function TicketDetail() {
     isError,
   } = useGetTicketQuery(ticketId, { skip: !isValidTicketId });
 
-  if (!isValidTicketId) {
-    return <Alert severity="error">Invalid ticket ID.</Alert>;
+  const [
+    deleteTicket,
+    { isLoading: isDeleting, isError: isDeleteError },
+  ] = useDeleteTicketMutation();
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
+  async function handleDelete() {
+    try {
+      await deleteTicket(ticketId).unwrap();
+      navigate('/tickets');
+     }
+     catch {
+      // Error handling is done via isDeleteError state
+    }
   }
 
   if (isLoading) {
@@ -58,6 +77,44 @@ export default function TicketDetail() {
       <Typography sx={{ mt: 1, mb: 4, whiteSpace: 'pre-wrap' }}>
         {ticket.description}
       </Typography>
+
+      <Stack direction="row" spacing={2}>
+        <Button>
+          Edit Ticket
+        </Button>
+        <Button
+          color="error"
+          variant="outlined"
+          onClick={() => setConfirmOpen(true)}
+        >
+          Delete Ticket
+        </Button>
+        {isDeleteError && (
+          <Alert severity="error">
+            Unable to delete the ticket. Please try again.
+          </Alert>
+        )}
+        <Dialog open={confirmOpen} onClose={() => setConfirmOpen(false)}>
+          <DialogTitle>Delete ticket?</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              This action cannot be undone. Are you sure?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setConfirmOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              color="error"
+              disabled={isDeleting}
+              onClick={handleDelete}
+            >
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </Stack>
     </Box>
   );
 }

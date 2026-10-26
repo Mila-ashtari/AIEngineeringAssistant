@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router';
 
-import { useGetTicketsQuery, useDeleteTicketMutation } from '../api';
+import { useGetTicketsQuery } from '../api';
 
 export default function TicketsPage() {
   const {
@@ -19,7 +19,6 @@ export default function TicketsPage() {
     isError,
   } = useGetTicketsQuery();
 
-  const [deleteTicket] = useDeleteTicketMutation();
 
   if (isLoading) {
     return <CircularProgress />;
@@ -71,12 +70,7 @@ export default function TicketsPage() {
               <Typography variant="body2">
                 Priority: {ticket.priority}
               </Typography>
-              <Button
-                onClick={() => deleteTicket(ticket.id)}
-                variant="outlined"
-                color="error">
-                Delete
-              </Button>
+            
             </CardContent>
             </Link>
           </Card>

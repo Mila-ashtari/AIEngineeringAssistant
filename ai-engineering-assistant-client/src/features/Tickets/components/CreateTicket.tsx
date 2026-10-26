@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Alert, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-import TicketForm from '../components/TicketForm';
+import TicketForm from './TicketForm';
 import { useCreateTicketMutation } from  '../api';
 import type { TicketInput } from '../types';
 
